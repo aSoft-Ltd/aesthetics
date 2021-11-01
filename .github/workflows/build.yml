@@ -1,0 +1,54 @@
+name: Build & Test
+
+on:
+  pull_request:
+    branches: [ master-dev ]
+
+jobs:
+  build-project:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 16
+        uses: actions/setup-java@v1
+        with:
+          java-version: 16
+      - name: Cache Gradle
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+            ~/.gradle/yarn
+            ~/.gradle/nodejs
+          key: ${{ runner.os }}-gradle-${{ hashFiles('gradle/gradle-wrapper.*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Cache konan
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.konan/dependencies
+            ~/.konan/kotlin-native-macos*
+          key: ${{ runner.os }}-konan-
+          restore-keys: ${{ runner.os }}-konan-
+
+      - name: Cache node-modules
+        uses: actions/cache@v2
+        with:
+          path: ./build/js/node_modules
+          key: ${{ runner.os }}-node-modules-
+          restore-keys: ${{ runner.os }}-node-modules-
+
+      - name: Making gradlew executable
+        run: chmod +x ./gradlew
+
+      - name: Warm up the jvm
+        run: ./gradlew tasks
+
+      - name: Building color
+        run: ./gradlew :color-core:build :color-css:build :color-compose:build
+
+      - name: Building theme
+        run: ./gradlew :theme-core:build :theme-css:build :theme-compose:build :theme-react:build

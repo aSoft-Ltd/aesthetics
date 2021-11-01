@@ -1,0 +1,7 @@
+[versions]
+css = "1.0.0-pre.262-kotlin-1.5.31"
+react = "17.0.2-pre.262-kotlin-1.5.31"
+
+[libraries]
+css = { module = "org.jetbrains.kotlin-wrappers:kotlin-css", version.ref = "css" }
+react = { module = "org.jetbrains.kotlin-wrappers:kotlin-react", version.ref = "react" }
