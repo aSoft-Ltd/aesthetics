@@ -6,7 +6,7 @@ package aesthetics
 import kotlin.js.JsExport
 
 data class Shadow(
-    val color: Color = Unspecified,
+    val color: Color? = null,
     val offset: Offset = Offset.Zero,
     val blurRadius: Float = 0f
 )

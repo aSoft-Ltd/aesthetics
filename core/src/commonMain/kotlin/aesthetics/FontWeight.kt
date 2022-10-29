@@ -7,31 +7,103 @@ import kotlin.js.JsName
 
 sealed interface FontWeight : Spectrum
 
-val ExtraLight: FontWeight = S100
-
-val VeryLight: FontWeight = S200
-
-val Light: FontWeight = S300
-
-val SlightlyLight: FontWeight = S400
+/**
+ * Also dubbed as [ExtraLight]
+ */
+inline val W100: FontWeight get() = S100
 
 /**
- * F500
+ * Also dubbed as [VeryLight]
  */
-val Normal: FontWeight = S500
+inline val W200: FontWeight get() = S200
 
 /**
- * F500
+ * Also dubbed as [Light]
  */
-val Regular: FontWeight = S500
+inline val W300: FontWeight get() = S300
 
-val SlightlyBold: FontWeight = S600
+/**
+ * Also dubbed as [SlightlyLight]
+ */
+inline val W400: FontWeight get() = S400
 
-val Bold: FontWeight = S700
+/**
+ * Also dubbed as [Normal]/[Regular]
+ */
+inline val W500: FontWeight get() = S500
 
-val VeryBold: FontWeight = S800
+/**
+ * Also dubbed as [SlightlyBold]
+ */
+inline val W600: FontWeight get() = S600
 
-val ExtraBold: FontWeight = S900
+/**
+ * Also dubbed as [Bold]
+ */
+inline val W700: FontWeight get() = S700
+
+/**
+ * Also dubbed as [VeryBold]
+ */
+inline val W800: FontWeight get() = S800
+
+/**
+ * Also dubbed as [ExtraBold]
+ */
+inline val W900: FontWeight get() = S900
+
+// -------------------------------- aliases ---------------------------------------
+/**
+ * Alias for W100
+ */
+inline val ExtraLight: FontWeight get() = S100
+
+/**
+ * Alias W200
+ */
+inline val VeryLight: FontWeight get() = S200
+
+/**
+ * Alias for W300
+ */
+inline val Light: FontWeight get() = S300
+
+/**
+ * Alias for W400
+ */
+inline val SlightlyLight: FontWeight get() = S400
+
+/**
+ * Alias for W500
+ * Also called [Regular]
+ */
+inline val Normal: FontWeight get() = S500
+
+/**
+ * Alias for W500
+ * Also called [Normal]
+ */
+inline val Regular: FontWeight get() = S500
+
+/**
+ * Alias for W600
+ */
+inline val SlightlyBold: FontWeight get() = S600
+
+/**
+ * Alias for W700
+ */
+inline val Bold: FontWeight get() = S700
+
+/**
+ * Alias for W800
+ */
+inline val VeryBold: FontWeight get() = S800
+
+/**
+ * Alias for W900
+ */
+inline val ExtraBold: FontWeight get() = S900
 
 @JsName("fontWeightOf")
 fun FontWeight(value: Int): FontWeight = SpectrumImpl(value)

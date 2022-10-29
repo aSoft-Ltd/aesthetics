@@ -7,23 +7,23 @@ import kotlin.js.JsName
 
 sealed interface Size : Spectrum
 
-val ExtraSmall: Size = S100
+inline val ExtraSmall: Size get() = S100
 
-val VerySmall: Size = S200
+inline val VerySmall: Size get() = S200
 
-val Small: Size = S300
+inline val Small: Size get() = S300
 
-val SlightlySmall: Size = S400
+inline val SlightlySmall: Size get() = S400
 
-val Medium: Size = S500
+inline val Medium: Size get() = S500
 
-val SlightlyLarge: Size = S600
+inline val SlightlyLarge: Size get() = S600
 
-val Large: Size = S700
+inline val Large: Size get() = S700
 
-val VeryLarge: Size = S800
+inline val VeryLarge: Size get() = S800
 
-val ExtraLarge: Size = S900
+inline val ExtraLarge: Size get() = S900
 
 @JsName("sizeOf")
 fun Size(value: Int): Size = SpectrumImpl(value)

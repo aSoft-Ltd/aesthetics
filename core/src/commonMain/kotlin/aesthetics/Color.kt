@@ -4,10 +4,7 @@ package aesthetics
 
 import kotlin.js.JsExport
 
-sealed interface Color {
-    val isUnspecified get() = this is Unspecified
-    val isSpecified get() = !isUnspecified
-}
+sealed interface Color
 
 sealed interface Alpha {
     val alphaRatio: Double
