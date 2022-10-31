@@ -25,12 +25,4 @@ inline fun TStyle.toComposeTextStyle() = CTextStyle(
     textDirection = null,
     lineHeight = lineHeight ?: TextUnit.Unspecified,
     textIndent = null
-).also {
-    mapOf(
-        "XS" to ExtraSmall, "VS" to VerySmall, "S" to Small, "SS" to SlightlySmall, "M" to Medium, "SL" to SlightlyLarge, "L" to Large, "VL" to VeryLarge, "XL" to ExtraLarge
-    ).onEach {
-        println("${it.key}\t${it.value.toEm()}")
-    }.onEach {
-        println("${it.key}\t${it.value.sp()}")
-    }
-}
+)
