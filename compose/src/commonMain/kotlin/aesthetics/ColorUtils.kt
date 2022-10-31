@@ -8,7 +8,7 @@ inline fun Color?.toComposeColor(): ComposeColor = when (this) {
         red = red.toFloat() / 255,
         green = green.toFloat() / 255,
         blue = blue.toFloat() / 255,
-        alpha = alphaRatio.toFloat()
+        alpha = alphaRatio
     )
 
     is HSL -> TODO()

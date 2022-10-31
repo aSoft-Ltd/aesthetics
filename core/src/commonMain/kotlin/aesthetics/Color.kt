@@ -7,7 +7,7 @@ import kotlin.js.JsExport
 sealed interface Color
 
 sealed interface Alpha {
-    val alphaRatio: Double
+    val alphaRatio: Float
     val alphaPct: Int get() = (alphaRatio * 100).toInt()
 }
 
