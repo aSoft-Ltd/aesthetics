@@ -14,7 +14,7 @@ plugins {
 kotlin {
     android()
     jvm()
-//    js(IR) { browser() }
+    js(IR) { browser() }
 
     sourceSets {
         val commonMain by getting {
