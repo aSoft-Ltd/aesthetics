@@ -1,7 +1,7 @@
 import org.jetbrains.compose.compose
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.dsl.KotlinCompile
 import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension
 import org.jetbrains.compose.experimental.dsl.IOSDevices
 
@@ -49,9 +49,9 @@ kotlin {
     }
 }
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "11"
-}
+//tasks.withType<KotlinCompile> {
+//    kotlinOptions.jvmTarget = "11"
+//}
 
 
 // TODO: remove when https://youtrack.jetbrains.com/issue/KT-50778 fixed
@@ -80,9 +80,9 @@ android {
         buildConfig = false
         compose = true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.3.2"
-    }
+//    composeOptions {
+//        kotlinCompilerExtensionVersion = kotlinz.versions.compose.compiler.get()
+//    }
 
     sourceSets {
         getByName("main") {
@@ -90,5 +90,22 @@ android {
 //            res.srcDirs("src/androidMain/res", "src/commonMain/resources")
 //        }
         }
+    }
+}
+
+compose {
+//    kotlinCompilerPlugin.set(dependencies.compiler.forKotlin("1.8.0"))
+    kotlinCompilerPlugin.set(kotlinz.versions.compose.compiler)
+    kotlinCompilerPluginArgs.add(kotlinz.versions.kotlin.map {
+        "suppressKotlinVersionCompatibilityCheck=$it"
+    })
+}
+
+tasks.withType(KotlinCompile::class).configureEach {
+    kotlinOptions {
+        val v = kotlinz.versions.kotlin.get()
+        freeCompilerArgs += listOf(
+            "-P", "plugin:androidx.compose.compiler.plugins.kotlin:suppressKotlinVersionCompatibilityCheck=$v"
+        )
     }
 }
