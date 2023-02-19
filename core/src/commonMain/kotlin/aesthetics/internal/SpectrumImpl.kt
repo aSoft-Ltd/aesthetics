@@ -4,11 +4,13 @@ package aesthetics
 
 import kotlin.jvm.JvmInline
 
+@PublishedApi
 @JvmInline
 internal value class SpectrumImpl private constructor(
     override val value: Int
 ) : Size, FontWeight {
-    internal companion object {
+
+    companion object {
         operator fun invoke(value: Int): SpectrumImpl {
             if (value <= 0) {
                 val message = "FontWeight/Size value must not be less than or equal to zero"

@@ -54,61 +54,61 @@ inline val W900: FontWeight get() = S900
 
 // -------------------------------- aliases ---------------------------------------
 /**
- * Alias for W100
+ * Alias for [W100]
  */
 inline val ExtraLight: FontWeight get() = S100
 
 /**
- * Alias W200
+ * Alias [W200]
  */
 inline val VeryLight: FontWeight get() = S200
 
 /**
- * Alias for W300
+ * Alias for [W300]
  */
 inline val Light: FontWeight get() = S300
 
 /**
- * Alias for W400
+ * Alias for [W400]
  */
 inline val SlightlyLight: FontWeight get() = S400
 
 /**
- * Alias for W500
+ * Alias for [W500]
  * Also called [Regular]
  */
 inline val Normal: FontWeight get() = S500
 
 /**
- * Alias for W500
+ * Alias for [W500]
  * Also called [Normal]
  */
 inline val Regular: FontWeight get() = S500
 
 /**
- * Alias for W600
+ * Alias for [W600]
  */
 inline val SlightlyBold: FontWeight get() = S600
 
 /**
- * Alias for W700
+ * Alias for [W700]
  */
 inline val Bold: FontWeight get() = S700
 
 /**
- * Alias for W800
+ * Alias for [W800]
  */
 inline val VeryBold: FontWeight get() = S800
 
 /**
- * Alias for W900
+ * Alias for [W900]
  */
 inline val ExtraBold: FontWeight get() = S900
 
 @JsName("fontWeightOf")
-fun FontWeight(value: Int): FontWeight = SpectrumImpl(value)
+inline fun FontWeight(value: Int): FontWeight = SpectrumImpl(value)
 
 @JsName("lerpFontWeight")
-fun lerp(start: FontWeight, stop: FontWeight, fraction: Float): FontWeight = SpectrumImpl(
+inline fun lerp(start: FontWeight, stop: FontWeight, fraction: Float): FontWeight = SpectrumImpl(
     lerp(start.value, stop.value, fraction)
 )
