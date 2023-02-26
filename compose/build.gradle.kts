@@ -1,9 +1,5 @@
-import org.jetbrains.compose.compose
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinCompile
-import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension
-import org.jetbrains.compose.experimental.dsl.IOSDevices
+import org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile
 
 plugins {
     id("com.android.library")
@@ -40,25 +36,7 @@ kotlin {
                 api(compose.desktop.currentOs)
             }
         }
-
-//        val jsMain by getting {
-//            dependencies {
-//                api(compose.web.core)
-//            }
-//        }
     }
-}
-
-//tasks.withType<KotlinCompile> {
-//    kotlinOptions.jvmTarget = "11"
-//}
-
-
-// TODO: remove when https://youtrack.jetbrains.com/issue/KT-50778 fixed
-project.tasks.withType(org.jetbrains.kotlin.gradle.dsl.KotlinJsCompile::class.java).configureEach {
-    kotlinOptions.freeCompilerArgs += listOf(
-        "-Xir-dce-runtime-diagnostic=log"
-    )
 }
 
 android {
@@ -80,9 +58,6 @@ android {
         buildConfig = false
         compose = true
     }
-//    composeOptions {
-//        kotlinCompilerExtensionVersion = kotlinz.versions.compose.compiler.get()
-//    }
 
     sourceSets {
         getByName("main") {
@@ -94,14 +69,13 @@ android {
 }
 
 compose {
-//    kotlinCompilerPlugin.set(dependencies.compiler.forKotlin("1.8.0"))
     kotlinCompilerPlugin.set(kotlinz.versions.compose.compiler)
     kotlinCompilerPluginArgs.add(kotlinz.versions.kotlin.map {
         "suppressKotlinVersionCompatibilityCheck=$it"
     })
 }
 
-tasks.withType(KotlinCompile::class).configureEach {
+tasks.withType(KotlinJsCompile::class).configureEach {
     kotlinOptions {
         val v = kotlinz.versions.kotlin.get()
         freeCompilerArgs += listOf(
