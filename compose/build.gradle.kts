@@ -10,7 +10,7 @@ plugins {
 kotlin {
     android()
     jvm()
-    js(IR) { browser() }
+    if(Targeting.JS) js(IR) { browser() }
 
     sourceSets {
         val commonMain by getting {
