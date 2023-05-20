@@ -1,5 +1,0 @@
-[versions]
-nexus-staging = "0.22.0"
-
-[plugins]
-nexus-staging = { id = "io.codearte.nexus-staging", version.ref = "nexus-staging" }
