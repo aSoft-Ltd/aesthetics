@@ -34,12 +34,3 @@ compose {
         "suppressKotlinVersionCompatibilityCheck=$it"
     })
 }
-
-tasks.withType(KotlinJsCompile::class).configureEach {
-    kotlinOptions {
-        val v = kotlinz.versions.kotlin.get()
-        freeCompilerArgs += listOf(
-            "-P", "plugin:androidx.compose.compiler.plugins.kotlin:suppressKotlinVersionCompatibilityCheck=$v"
-        )
-    }
-}
