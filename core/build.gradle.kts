@@ -20,7 +20,7 @@ kotlin {
     sourceSets {
         val commonTest by getting {
             dependencies {
-                api(projects.kommanderCore)
+                implementation(libs.kommander.core)
             }
         }
     }
